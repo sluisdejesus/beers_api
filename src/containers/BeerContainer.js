@@ -20,7 +20,7 @@ const BeerContainer = () => {
     return (
         <>
         <h3>This is the beer container</h3>
-        <p>We have {beers.length} on record!</p>
+        <p>We have {beers.length} beers on record!</p>
         <BeerSelector beers = {beers}/>
         </>
     )};
