@@ -6,6 +6,7 @@ import BeerSelector from '../components/BeerSelector';
 const BeerContainer = () => {
 
     const [beers, setBeers] = useState([])
+    const [selectedBeerId, setSelectedBeerId] = useState('')
 
     useEffect(() => {
         getBeers()
@@ -17,11 +18,19 @@ const BeerContainer = () => {
         .then(beersData => setBeers(beersData))
     }
 
+
+const handleBeerSelected = id => {
+    setSelectedBeerId(id)
+}
+
+const selectedBeer = beers.find(beer => beer.id === selectedBeerId)
+
     return (
         <>
         <h3>This is the beer container</h3>
         <p>We have {beers.length} beers on record!</p>
-        <BeerSelector beers = {beers}/>
+        <BeerSelector beers = {beers} onBeerSelected = {handleBeerSelected}/>
+        <Beer beer = {selectedBeer}/>
         </>
     )};
 
